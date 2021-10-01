@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Basic Raytracer</name>
+    </assembly>
+    <members>
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.AddShapeToScene(Basic_Raytracer.ViewModels.ShapeVM)">
+            <summary>
+            Adds a supported shape to the active scene
+            </summary>
+            <param name="shape"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.DeleteShapeFromScene(System.Int32)">
+            <summary>
+            Deletes a shape from the active scene
+            </summary>
+            <param name="ID">The ID of the shape to delete</param>
+            <returns></returns>
+        </member>
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.GetShapeTypes">
+            <summary>
+            Gets all valid shape types
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.GetScene">
+            <summary>
+            Gets all objects in the active scene
+            </summary>
+            <returns>A list of </returns>
+        </member>
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.DrawScene">
+            <summary>
+            Renders the scene as an image
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
