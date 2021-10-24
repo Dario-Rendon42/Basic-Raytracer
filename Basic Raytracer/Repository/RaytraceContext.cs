@@ -12,6 +12,7 @@ namespace Basic_Raytracer.Repository
         public DbSet<Scene> Scenes { get; set; }
         public DbSet<ShapeType> ShapeTypes { get; set; }
         public DbSet<Shape> Shapes { get; set; }
+        public DbSet<Camera> Cameras { get; set; }
         public string DbPath { get; private set; }
 
         public RaytraceContext()

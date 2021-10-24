@@ -10,5 +10,6 @@ namespace Basic_Raytracer.Tables
         public int ID { get; set; }
         public string SceneName { get; set; }
         public List<Shape> Shapes = new();
+        public List<Camera> Cameras = new();
     }
 }

@@ -5,8 +5,9 @@ namespace Basic_Raytracer.ViewModels
 {
     public class SceneVM
     {
-        public Point3D CameraLocation { get; set; }
-        public Point3D CameraDirection { get; set; }
-        public IEnumerable<ShapeVM> ObjectsInScene { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public IEnumerable<ShapeVM> Shapes { get; set; }
+        public IEnumerable<CameraVM> Cameras { get; set; }
     }
 }
