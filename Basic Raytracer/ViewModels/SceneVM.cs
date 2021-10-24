@@ -7,7 +7,7 @@ namespace Basic_Raytracer.ViewModels
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public IEnumerable<ShapeVM> Shapes { get; set; }
+        public IEnumerable<IShapeVM> Shapes { get; set; }
         public IEnumerable<CameraVM> Cameras { get; set; }
     }
 }

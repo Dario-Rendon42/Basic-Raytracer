@@ -27,7 +27,7 @@ namespace Basic_Raytracer.Controllers
         /// <param name="shape"></param>
         /// <returns></returns>
         [HttpPost]
-        public ShapeVM AddShapeToScene(ShapeVM shape)
+        public IShapeVM AddShapeToScene(IShapeVM shape)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +38,7 @@ namespace Basic_Raytracer.Controllers
         /// <param name="ID">The ID of the shape to delete</param>
         /// <returns></returns>
         [HttpDelete]
-        public ShapeVM DeleteShapeFromScene(int ID)
+        public IShapeVM DeleteShapeFromScene(int ID)
         {
             throw new NotImplementedException();
         }

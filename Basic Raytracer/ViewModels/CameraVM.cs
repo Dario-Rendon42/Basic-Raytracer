@@ -1,5 +1,4 @@
-﻿using Basic_Raytracer.Models;
-using MathNet.Spatial.Euclidean;
+﻿using MathNet.Spatial.Euclidean;
 
 namespace Basic_Raytracer.ViewModels
 {
