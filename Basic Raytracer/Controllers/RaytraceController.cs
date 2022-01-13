@@ -1,5 +1,5 @@
-﻿using Basic_Raytracer.Models;
-using Basic_Raytracer.ViewModels;
+﻿using Basic_Raytracer.Repository;
+using Basic_Raytracer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,10 +15,12 @@ namespace Basic_Raytracer.Controllers
     public class RaytraceController : ControllerBase
     {
         private readonly ILogger<RaytraceController> _logger;
+        private readonly IRepository _repo;
 
-        public RaytraceController(ILogger<RaytraceController> logger)
+        public RaytraceController(ILogger<RaytraceController> logger, IRepository repo)
         {
             _logger = logger;
+            _repo = repo;
         }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace Basic_Raytracer.Controllers
         /// <param name="shape"></param>
         /// <returns></returns>
         [HttpPost]
-        public IShapeVM AddShapeToScene(IShapeVM shape)
+        public IShape AddShapeToScene(IShape shape)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +40,7 @@ namespace Basic_Raytracer.Controllers
         /// <param name="ID">The ID of the shape to delete</param>
         /// <returns></returns>
         [HttpDelete]
-        public IShapeVM DeleteShapeFromScene(int ID)
+        public IShape DeleteShapeFromScene(int ID)
         {
             throw new NotImplementedException();
         }
@@ -48,7 +50,7 @@ namespace Basic_Raytracer.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<ShapeTypesVM> GetShapeTypes()
+        public IEnumerable<ShapeTypes> GetShapeTypes()
         {
             throw new NotImplementedException();
         }
@@ -58,7 +60,7 @@ namespace Basic_Raytracer.Controllers
         /// </summary>
         /// <returns>A list of </returns>
         [HttpGet]
-        public SceneVM GetScene()
+        public Scene GetScene()
         {
             throw new NotImplementedException();
         }
@@ -68,9 +70,18 @@ namespace Basic_Raytracer.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public Bitmap DrawScene()
+        public IActionResult DrawScene(int width = 255, int height = 255)
         {
-            throw new NotImplementedException();
+            var camera = GetScene().ActiveCamera;
+            Bitmap bitmap = camera.Draw(width, height);
+
+            //System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            //bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            //var f = File(ms, "image/jpg");
+            //return f;
+            bitmap.Save("C:\\Users\\Dario Rendon\\Pictures\\out.png");
+            var image = System.IO.File.OpenRead("C:\\Users\\Dario Rendon\\Pictures\\out.png");
+            return File(image, "image/png");
         }
     }
 }

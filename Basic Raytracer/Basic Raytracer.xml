@@ -4,7 +4,7 @@
         <name>Basic Raytracer</name>
     </assembly>
     <members>
-        <member name="M:Basic_Raytracer.Controllers.RaytraceController.AddShapeToScene(Basic_Raytracer.ViewModels.ShapeVM)">
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.AddShapeToScene(Basic_Raytracer.ViewModels.IShapeVM)">
             <summary>
             Adds a supported shape to the active scene
             </summary>
@@ -30,7 +30,7 @@
             </summary>
             <returns>A list of </returns>
         </member>
-        <member name="M:Basic_Raytracer.Controllers.RaytraceController.DrawScene">
+        <member name="M:Basic_Raytracer.Controllers.RaytraceController.DrawScene(System.Int32,System.Int32)">
             <summary>
             Renders the scene as an image
             </summary>

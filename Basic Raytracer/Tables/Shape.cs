@@ -10,7 +10,7 @@ namespace Basic_Raytracer.Tables
         public int ID { get; set; }
         public string ShapeName { get; set; }
         public int ShapeTypeID { get; set; }
-        public ShapeType ShapeType { get; set; }
+        public ShapeType Type { get; set; }
         public int SceneID { get; set; }
         public Scene Scene { get; set; }
         public double OriginX { get; set; }
@@ -19,6 +19,6 @@ namespace Basic_Raytracer.Tables
         public int ColorRed { get; set; }
         public int ColorGreen { get; set; }
         public int ColorBlue { get; set; }
-
+        public List<ShapeProps> Props = new();
     }
 }

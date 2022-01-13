@@ -1,20 +1,23 @@
 ﻿using MathNet.Spatial.Euclidean;
 using System.Drawing;
 
-namespace Basic_Raytracer.ViewModels
+namespace Basic_Raytracer.Models
 {
-    public interface IShapeVM
+    public interface IShape
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
-        public SceneVM Scene { get; set; }
+        public Scene Scene { get; set; }
         public Point3D Origin { get; set; }
 
         public Color Color { get; set; }
 
-        public Point3D IntersectionPoint(Ray3D ray);
+        public float IntersectionPoint(Ray3D ray);
 
-        public void Draw();
+        public Color Draw(Ray3D ray)
+        {
+            return Color.Green;
+        }
     }
 }
