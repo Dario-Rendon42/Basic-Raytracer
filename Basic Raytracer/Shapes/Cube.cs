@@ -12,7 +12,6 @@ namespace Basic_Raytracer.Shapes
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
         public Scene Scene { get; set; }
         public Point3D Origin { get; set; }
         public Color Color { get; set; }

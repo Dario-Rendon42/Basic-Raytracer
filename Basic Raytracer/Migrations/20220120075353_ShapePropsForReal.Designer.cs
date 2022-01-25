@@ -3,14 +3,16 @@ using System;
 using Basic_Raytracer.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Basic_Raytracer.Migrations
 {
     [DbContext(typeof(RaytraceContext))]
-    partial class RaytraceContextModelSnapshot : ModelSnapshot
+    [Migration("20220120075353_ShapePropsForReal")]
+    partial class ShapePropsForReal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

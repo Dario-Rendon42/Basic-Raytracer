@@ -62,7 +62,9 @@ namespace Basic_Raytracer.Controllers
         [HttpGet]
         public Scene GetScene()
         {
-            throw new NotImplementedException();
+            var scenes = _repo.GetScenes();
+            var first = scenes.FirstOrDefault();
+            return first;
         }
 
         /// <summary>

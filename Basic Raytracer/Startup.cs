@@ -1,3 +1,4 @@
+using Basic_Raytracer.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace Basic_Raytracer
         {
 
             services.AddControllers();
+            services.AddSingleton<IRepository, TestRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basic_Raytracer", Version = "v1" });

@@ -43,10 +43,9 @@ namespace Basic_Raytracer.Models
                                                  // Note that coordinates for the Bitmap class begin on the top left
 
                     var v = new Vector3D(xpos, ypos, wlength);
-                    //var r = new Ray3D(Origin, v);
                     var r = new Ray3D(new Point3D(0, 0, 0), v); // TODO: enable transform to camera position and direction
                                                                 // currently static at origin looking stright up
-                    var c = Scene.DrawRay(new Ray3D()) ;
+                    var c = Scene.DrawRay(r) ;
                     bitmap.SetPixel(x, y, c);
                 }
             }

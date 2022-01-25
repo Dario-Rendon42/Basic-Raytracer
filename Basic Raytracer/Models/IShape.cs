@@ -7,7 +7,6 @@ namespace Basic_Raytracer.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Type { get; set; }
         public Scene Scene { get; set; }
         public Point3D Origin { get; set; }
 
@@ -17,7 +16,7 @@ namespace Basic_Raytracer.Models
 
         public Color Draw(Ray3D ray)
         {
-            return Color.Green;
+            return Color;
         }
     }
 }
