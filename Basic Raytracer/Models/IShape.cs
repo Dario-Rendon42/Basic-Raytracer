@@ -12,7 +12,9 @@ namespace Basic_Raytracer.Models
 
         public Color Color { get; set; }
 
-        public float IntersectionPoint(Ray3D ray);
+        // returns null if there is no intersections or infinite intersections
+        // returns the distance to the closest intersection between the object and the ray start
+        public double? IntersectionDist(Ray3D ray);
 
         public Color Draw(Ray3D ray)
         {

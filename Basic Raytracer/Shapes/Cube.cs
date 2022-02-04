@@ -16,7 +16,7 @@ namespace Basic_Raytracer.Shapes
         public Point3D Origin { get; set; }
         public Color Color { get; set; }
 
-        public float IntersectionPoint(Ray3D ray)
+        public double? IntersectionDist(Ray3D ray)
         {
             throw new NotImplementedException();
         }

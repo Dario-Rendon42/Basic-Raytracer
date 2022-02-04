@@ -15,18 +15,23 @@ namespace Basic_Raytracer.Models
         public Camera ActiveCamera { get; set; }
         public Color DrawRay(Ray3D ray)
         {
-            float closestDist = float.PositiveInfinity;
+            double closestDist = double.PositiveInfinity;
             IShape closestShape = null;
             foreach(var shape in Shapes)
             {
-                var dist = shape.IntersectionPoint(ray);
-
-                if (dist < closestDist)
+                var dist = shape.IntersectionDist(ray);
+                // check if there is a collision at all
+                if(dist is not null)
                 {
-                    closestShape = shape;
-                    closestDist = dist;
+
+                    if (dist < closestDist)
+                    {
+                        closestShape = shape;
+                        closestDist = (double) dist;
+                    }
                 }
             }
+            // TODO: change background color to settings file
             Color outColor = closestShape is null ? Color.Black : closestShape.Draw(ray);
             return outColor;
         }

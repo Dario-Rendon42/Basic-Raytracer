@@ -15,6 +15,8 @@ namespace Basic_Raytracer.Repository
         private IList<ShapeTypes> shapeTypes;
         public TestRepository()
         {
+            Scenes = new List<Scene>();
+            shapeTypes = new List<ShapeTypes>();
             var scene = new Scene()
             {
                 ID = 1,
@@ -28,8 +30,8 @@ namespace Basic_Raytracer.Repository
                 Name = "Plane 1",
                 Scene = scene,
                 Color = Color.Blue,
-                Origin = new Point3D(10, 0, 0),
-                Normal = new Point3D(9, 0, 0),
+                Origin = new Point3D(100, 0, 0),
+                Normal = new Vector3D(1, 1, 1),
             };
             var camera = new Camera()
             {
@@ -42,6 +44,7 @@ namespace Basic_Raytracer.Repository
             scene.Shapes.Add(plane);
             scene.Cameras.Add(camera);
             scene.ActiveCamera = camera;
+            Scenes.Add(scene);
         }
         public IList<Camera> GetSceneCameras(int sceneId)
         {

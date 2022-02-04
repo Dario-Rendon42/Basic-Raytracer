@@ -72,7 +72,7 @@ namespace Basic_Raytracer.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult DrawScene(int width = 255, int height = 255)
+        public IActionResult DrawScene(int width = 200, int height = 200)
         {
             var camera = GetScene().ActiveCamera;
             Bitmap bitmap = camera.Draw(width, height);
