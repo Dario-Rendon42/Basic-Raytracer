@@ -32,7 +32,7 @@ namespace Basic_Raytracer.Models
                 }
             }
             // TODO: change background color to settings file
-            Color outColor = closestShape is null ? Color.Black : closestShape.Draw(ray);
+            Color outColor = closestShape is null ? Color.Black : closestShape.Color;
             return outColor;
         }
     }

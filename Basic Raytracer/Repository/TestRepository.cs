@@ -30,8 +30,18 @@ namespace Basic_Raytracer.Repository
                 Name = "Plane 1",
                 Scene = scene,
                 Color = Color.Blue,
-                Origin = new Point3D(100, 0, 0),
-                Normal = new Vector3D(1, 1, 1),
+                Origin = new Point3D(10, 0, 0),
+                Normal = new Vector3D(1, 0, 0),
+            };
+            var circle = new Shapes.Circle()
+            {
+                ID = 2,
+                Name = "Circle 1",
+                Scene = scene,
+                Color = Color.Red,
+                Origin = new Point3D(0, 0, 30),
+                Normal = new Vector3D(1, 0, 1),
+                Radius = 20
             };
             var camera = new Camera()
             {
@@ -42,6 +52,7 @@ namespace Basic_Raytracer.Repository
                 FOV = 120
             };
             scene.Shapes.Add(plane);
+            scene.Shapes.Add(circle);
             scene.Cameras.Add(camera);
             scene.ActiveCamera = camera;
             Scenes.Add(scene);

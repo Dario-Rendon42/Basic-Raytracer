@@ -34,6 +34,7 @@ namespace Basic_Raytracer.Models
             var wlength = Math.Tan(FOV/2) * width/2; // only calculating FOV for width
                                                      // having individual FOVs for width and height currently not supported
 
+            var ortho = false;
             for (int x = 0; x < width; x++)
             {
                 var xpos = x - (width / 2); // Determine wether pixel is on left/right side of screen
@@ -43,8 +44,15 @@ namespace Basic_Raytracer.Models
                                                  // Note that coordinates for the Bitmap class begin on the top left
 
                     var v = new Vector3D(xpos, ypos, wlength);
-                    var r = new Ray3D(Origin, v); // TODO: enable transform to camera position and direction
-                                                                // currently static at origin looking stright up
+                    Ray3D r;
+                    if (ortho) // TODO: make settings file toggle
+                    {
+                        r = new Ray3D(new Point3D(xpos, ypos, 0), v);
+                    } else
+                    {
+                        r = new Ray3D(Origin, v); // TODO: enable transform to camera position and direction
+                                                      // currently static at origin looking stright up
+                    }
                     var c = Scene.DrawRay(r) ;
                     bitmap.SetPixel(x, y, c);
                 }
