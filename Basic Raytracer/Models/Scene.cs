@@ -25,14 +25,10 @@ namespace Basic_Raytracer.Models
             {
                 var (dist, _) = shape.CalculateIntersection(ray);
                 // check if there is a collision at all
-                if (dist is not null)
+                if (dist is not null && dist < closestDist)
                 {
-
-                    if (dist < closestDist)
-                    {
-                        closestShape = shape;
-                        closestDist = (double)dist;
-                    }
+                    closestShape = shape;
+                    closestDist = (double)dist;
                 }
             }
             // subtracting a small distance prevents surfaces from creating shadows on themselves due to collision checking for lights starting from slightly behind the surface
@@ -56,25 +52,31 @@ namespace Basic_Raytracer.Models
                 {
                     var lightRay = new Ray3D(intersectionPoint, light.Origin.ToVector3D() - intersectionPoint.ToVector3D()); // ray from intersection point to light origin
                     var lightDist = intersectionPoint.DistanceTo(light.Origin);
+                    var addLight = true;
                     foreach (var shape in Shapes)
                     {
                         var (dist, _) = shape.CalculateIntersection(lightRay);
-                        if (dist is null || dist > lightDist)
+                        if (dist is not null && dist < lightDist)
                         {
-                            // There are no shapes that intersect the ray from point to light that are between the point and the light
-                            // Light hits this point, add light color based on intensity
-                            //var lightIntensity = light.Intensity / (4 * Math.PI * lightDist * lightDist); 
-                            var lightIntensity = light.Intensity / (Math.Pow(lightDist, 1.25));
-                            if (lightIntensity > 1e-6) // TODO: put epsilon in settings file
-                            {
-                                var lightR = outColor.R + (int)(lightIntensity * light.LightColor.R);
-                                var lightG = outColor.G + (int)(lightIntensity * light.LightColor.G);
-                                var lightB = outColor.B + (int)(lightIntensity * light.LightColor.B);
-                                lightR = Math.Max(0, Math.Min(lightR, 255));
-                                lightG = Math.Max(0, Math.Min(lightG, 255));
-                                lightB = Math.Max(0, Math.Min(lightB, 255));
-                                outColor = Color.FromArgb(lightR, lightG, lightB);
-                            }
+                            addLight = false;
+                            break;
+                        }
+                    }
+                    if (addLight)
+                    {
+                        // There are no shapes that intersect the ray from point to light that are between the point and the light
+                        // Light hits this point, add light color based on intensity
+                        //var lightIntensity = light.Intensity / (4 * Math.PI * lightDist * lightDist); 
+                        var lightIntensity = light.Intensity / (Math.Pow(lightDist, 1.25));
+                        if (lightIntensity > 1e-6) // TODO: put epsilon in settings file
+                        {
+                            var lightR = outColor.R + (int)(lightIntensity * light.LightColor.R);
+                            var lightG = outColor.G + (int)(lightIntensity * light.LightColor.G);
+                            var lightB = outColor.B + (int)(lightIntensity * light.LightColor.B);
+                            lightR = Math.Max(0, Math.Min(lightR, 255));
+                            lightG = Math.Max(0, Math.Min(lightG, 255));
+                            lightB = Math.Max(0, Math.Min(lightB, 255));
+                            outColor = Color.FromArgb(lightR, lightG, lightB);
                         }
                     }
                 }

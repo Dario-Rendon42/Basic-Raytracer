@@ -65,7 +65,7 @@ namespace Basic_Raytracer.Repository
             var light = new Light()
             {
                 ID = 1,
-                Intensity = 15,
+                Intensity = 100,
                 LightColor = Color.FromArgb(175, 150, 100),
                 Origin = new Point3D(30, -30, 50)
             };
