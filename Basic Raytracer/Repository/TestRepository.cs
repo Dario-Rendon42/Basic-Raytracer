@@ -1,5 +1,5 @@
 ﻿using Basic_Raytracer.Models;
-using Basic_Raytracer.Shapes;
+using Basic_Raytracer.Models.Shapes;
 using MathNet.Spatial.Euclidean;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Basic_Raytracer.Repository
                 Cameras = new List<Camera>(),
                 Lights = new List<Light>()
             };
-            var plane = new Shapes.Plane()
+            var plane = new Models.Shapes.Plane()
             {
                 ID = 1,
                 Name = "Plane 1",
@@ -34,17 +34,17 @@ namespace Basic_Raytracer.Repository
                 Origin = new Point3D(0, 0, 100),
                 Normal = new Vector3D(0, 0, 1),
             };
-            var circle = new Shapes.Circle()
+            var sphere = new Sphere()
             {
                 ID = 2,
                 Name = "Circle 1",
                 Scene = scene,
-                Color = Color.Red,
+                Color = Color.White,
                 Origin = new Point3D(0, 0, 90),
-                Normal = new Vector3D(0, 1, .5),
+                //Normal = new Vector3D(0, 1, .5),
                 Radius = 20
             };
-            var circle2 = new Shapes.Circle()
+            var circle = new Circle()
             {
                 ID = 3,
                 Name = "Circle 2",
@@ -52,7 +52,7 @@ namespace Basic_Raytracer.Repository
                 Color = Color.Blue,
                 Origin = new Point3D(0, 0, 90),
                 Normal = new Vector3D(1, 0, -.5),
-                Radius = 20
+                Radius = 30
             };
             var camera = new Camera()
             {
@@ -62,19 +62,35 @@ namespace Basic_Raytracer.Repository
                 Subject = new Point3D(0, 0, 1),
                 FOV = 90
             };
-            var light = new Light()
+            var lightRed = new Light()
             {
                 ID = 1,
-                Intensity = 100,
-                LightColor = Color.FromArgb(175, 150, 100),
-                Origin = new Point3D(30, -30, 50)
+                Intensity = 50,
+                LightColor = Color.FromArgb(175, 0, 0),
+                Origin = new Point3D(30, -30, 30)
+            };
+            var lightGreen = new Light()
+            {
+                ID = 2,
+                Intensity = 75,
+                LightColor = Color.FromArgb(0, 255, 0),
+                Origin = new Point3D(-30, 30, 50)
+            };
+            var lightBlue = new Light()
+            {
+                ID = 2,
+                Intensity = 50,
+                LightColor = Color.FromArgb(0, 0, 175),
+                Origin = new Point3D(0, 0, 50)
             };
             scene.Shapes.Add(plane);
+            scene.Shapes.Add(sphere);
             scene.Shapes.Add(circle);
-            scene.Shapes.Add(circle2);
             scene.Cameras.Add(camera);
             scene.ActiveCamera = camera;
-            scene.Lights.Add(light);
+            scene.Lights.Add(lightRed);
+            scene.Lights.Add(lightGreen);
+            scene.Lights.Add(lightBlue);
             Scenes.Add(scene);
         }
         public IList<Camera> GetSceneCameras(int sceneId)

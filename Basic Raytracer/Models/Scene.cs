@@ -66,8 +66,8 @@ namespace Basic_Raytracer.Models
                     {
                         // There are no shapes that intersect the ray from point to light that are between the point and the light
                         // Light hits this point, add light color based on intensity
-                        //var lightIntensity = light.Intensity / (4 * Math.PI * lightDist * lightDist); 
-                        var lightIntensity = light.Intensity / (Math.Pow(lightDist, 1.25));
+                        //var lightIntensity = light.Intensity / (4 * Math.PI * Math.Pow(lightDist, 2)); 
+                        var lightIntensity = light.Intensity / (Math.Pow(lightDist, 1.25)); // Adjusting denominator to my liking so light intensity doesn't fall off as hard
                         if (lightIntensity > 1e-6) // TODO: put epsilon in settings file
                         {
                             var lightR = outColor.R + (int)(lightIntensity * light.LightColor.R);

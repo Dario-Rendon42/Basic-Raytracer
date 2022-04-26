@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Basic_Raytracer.Shapes
+namespace Basic_Raytracer.Models.Shapes
 {
     public class Plane : IShape
     {
